@@ -20,12 +20,14 @@
 	padding-left: rem(20);
 	padding-right: rem(20);
 	border-radius: size(30, 15, 1919.99, 320);
+	padding-top: rem(30);
 
 	@include minw1920 {
 		max-width: max-size(1120);
 		padding-left: max-size(20);
 		padding-right: max-size(20);
 		border-radius: max-size(30);
+		padding-top: max-size(30);
 	}
 
 	&-inner+&-inner {
@@ -46,9 +48,11 @@
 		background: rgba(0, 0, 0, .2);
 		isolation: isolate;
 		padding: size(30, 10, 1919.99, 320);
+		border-radius: size(20, 15, 1919.99, 320);
 
 		@include minw1920 {
 			padding: max-size(30);
+			border-radius: max-size(20);
 		}
 
 		.img-back,
@@ -59,14 +63,14 @@
 			left: 0;
 			top: 0;
 			object-fit: cover;
-			transition: .4s;
+			transition: .6s;
 			z-index: -1;
 
 		}
 
 		.video-back {
 			opacity: 0;
-			transition: .4s;
+			transition: .6s;
 			transform: translate(50%, -50%) rotateY(90deg) rotateX(90deg);
 		}
 
