@@ -1,0 +1,257 @@
+// Сброс стилей браузера (reset)
+@import "../scss/vendor/reset.scss";
+
+// Функции и миксины
+@import "../scss/utils/functions.scss";
+@import "../scss/utils/mixin.scss";
+
+// Настройка шрифтов и переменных
+@import "../scss/vendor/fonts.scss";
+@import "../scss/variables/variables.scss";
+
+// общие классы
+@import "../scss/utils/utilities.scss";
+
+
+.cases__list {
+	max-width: rem(1120);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: rem(20);
+	padding-right: rem(20);
+	border-radius: size(30, 15, 1919.99, 320);
+
+	@include minw1920 {
+		max-width: max-size(1120);
+		padding-left: max-size(20);
+		padding-right: max-size(20);
+		border-radius: max-size(30);
+	}
+
+	&-inner+&-inner {
+		margin-top: rem(10);
+
+		@include minw1920 {
+			margin-top: max-size(10);
+		}
+	}
+
+	&-link {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		aspect-ratio: 9/7;
+		overflow: hidden;
+		background: rgba(0, 0, 0, .2);
+		isolation: isolate;
+		padding: size(30, 10, 1919.99, 320);
+
+		@include minw1920 {
+			padding: max-size(30);
+		}
+
+		.img-back,
+		.video-back {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			object-fit: cover;
+			transition: .4s;
+			z-index: -1;
+
+		}
+
+		.video-back {
+			opacity: 0;
+			transition: .4s;
+			transform: translate(50%, -50%) rotateY(90deg) rotateX(90deg);
+		}
+
+		&:hover {
+			.video-back {
+				opacity: 1;
+				transform: translate(0) rotateY(0) rotateX(0);
+			}
+
+			.img-back {
+				transform: translate(-50%, 50%) rotateY(-90deg) rotateX(-90deg);
+				opacity: 0;
+			}
+		}
+	}
+
+	&-status {
+		background-color: #ff4ff8;
+		color: #000;
+		font-weight: 800;
+		font-size: size(18, 12, 1919.99, 320);
+		line-height: 110%;
+		padding: rem(8) rem(11);
+		text-transform: uppercase;
+		border-radius: rem(6);
+
+		@include minw1920 {
+			font-size: max-size(18);
+			padding: max-size(8) max-size(11);
+			border-radius: max-size(6);
+		}
+	}
+
+	&-name {
+		font-size: size(30, 24, 1919.99, 320);
+		font-weight: 800;
+		line-height: 110%;
+		text-transform: uppercase;
+		color: #fff;
+		padding-right: rem(20);
+
+		@include minw1920 {
+			font-size: max-size(30);
+			padding-right: max-size(20);
+		}
+	}
+
+	&-body {
+		margin-top: auto;
+		margin-bottom: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+
+		&-inner {
+			background-color: #8d8d8d33;
+			border-radius: rem(6);
+			color: #fffc;
+			font-size: size(21, 14, 1919.99, 320);
+			font-weight: 800;
+			line-height: 110%;
+			padding: rem(8) rem(11);
+			text-transform: uppercase;
+
+			@include minw1920 {
+				font-size: max-size(21);
+				border-radius: max-size(6);
+				padding: max-size(8) max-size(11);
+			}
+		}
+
+		&-list {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 30px;
+		}
+	}
+}
+
+.casses__btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: size(36, 26, 1919.99, 320);
+	height: size(36, 26, 1919.99, 320);
+
+	@include minw1920 {
+		width: max-size(36);
+		height: max-size(36);
+	}
+
+	img,
+	svg {
+		flex-shrink: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+	}
+}
+
+.casses__btns-inner {
+	position: relative;
+}
+
+.casses__btns-inner+.casses__btns-inner {
+	margin-top: rem(15);
+
+	@include minw1920 {
+		margin-top: max-size(15);
+	}
+}
+
+.casses__btns-wrapp {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 0;
+	transform: translate(-100%, -100%);
+	isolation: isolate;
+	overflow: hidden;
+	border-radius: rem(10);
+	padding: size(15, 10, 1919.99, 320);
+	transition: .4s;
+	opacity: 0;
+
+	display: flex;
+	flex-direction: column;
+
+	@include minw1920 {
+		border-radius: max-size(10);
+		padding: max-size(15);
+	}
+
+	&::after {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		background: rgba(223, 223, 223, 0.8);
+		z-index: -1;
+		filter: blur(rem(70));
+		left: 0;
+		top: 0;
+
+		@include minw1920 {
+			filter: blur(max-size(70));
+		}
+	}
+}
+
+.casses__btn:hover~.casses__btns-wrapp {
+	transform: translate(-100%, -100%);
+	width: size(320, 200, 1919.99, 320);
+	height: size(320, 200, 1919.99, 320);
+	opacity: 1;
+
+	@include minw1920 {
+		width: max-size(320);
+		height: max-size(320);
+	}
+
+}
+
+.casses__btns-img {
+	width: size(100, 50, 1919.99, 320);
+	height: size(100, 50, 1919.99, 320);
+	margin: auto;
+
+	@include minw1920 {
+		width: max-size(100);
+		height: max-size(100);
+	}
+}
+
+.casses__btns-text {
+	color: #fffc;
+	font-size: size(31, 21, 1919.99, 320);
+	font-weight: 800;
+	line-height: 110%;
+	text-align: center;
+	text-transform: uppercase;
+
+	@include minw1920 {
+		font-size: max-size(31);
+	}
+}
